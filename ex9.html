@@ -1,0 +1,64 @@
+<!-- 지역적 컴포넌트 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <salgu-button></salgu-button>
+    </div>
+
+    <div id="app2">
+        <salgu-button></salgu-button>
+    </div>
+
+    <script> 
+        const helloworld = {
+            template: `<div>hello world</div>`
+        }
+
+        const SalguButton = {
+            components: {
+                'hello-world': helloworld
+            },
+            template: `
+                <div>
+                    <hello-world></hello-world>
+                    {{ name }}<br>
+                    <button @click="changeText">button</button>
+                </div>
+            `,
+            data() {
+                return {
+                    name: 'salgu'
+                }
+            },
+            methods: { 
+                changeText() {
+                    this.name = 'salgu upgrage'
+                }
+            }
+        };
+
+        const app = new Vue({ 
+            el: '#app', 
+            components:{
+                'salgu-button': SalguButton
+            }
+        });
+
+        const app2 = new Vue({ 
+            el: '#app2', 
+            components:{
+                'salgu-button': SalguButton
+            }
+        });
+
+    </script>
+</body>
+</html>
